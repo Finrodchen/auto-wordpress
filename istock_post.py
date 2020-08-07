@@ -19,12 +19,12 @@ post_content_html = post_content_html.encode("utf-8")
 wp = Client('https://i-stock.xyz/xmlrpc.php', 's02260441', 'simontp6nm06')
 
 post = WordPressPost()
-post.post_status = 'publish'
+post.post_status = 'draft'
 post.title = post_title
 post.content =post_content_html
 post.slug = post_title
 post.terms_names = {
-    'category' : ['COVID-19','美國新聞']
+    'category' : ['外幣匯率','財經趨勢']
 }
 
 wp.call(NewPost(post))
