@@ -24,7 +24,7 @@ post.title = post_title
 post.content =post_content_html
 post.slug = post_title
 post.terms_names = {
-    'category' : ['投資小學堂']
+    'category' : ['特管辦法']
 }
 
 wp.call(NewPost(post))

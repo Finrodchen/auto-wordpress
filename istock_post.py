@@ -24,7 +24,7 @@ post.title = post_title
 post.content =post_content_html
 post.slug = post_title
 post.terms_names = {
-    'category' : ['外幣匯率','財經趨勢']
+    'category' : ['美國新聞','科技發展','中國新聞']
 }
 
 wp.call(NewPost(post))

@@ -6,7 +6,7 @@ from wordpress_xmlrpc import Client, WordPressPost
 from wordpress_xmlrpc.methods.posts import GetPosts, NewPost
 from wordpress_xmlrpc.methods.users import GetUserInfo
 
-dir = sys.argv[1]
+dir = f'./MD/taiex.md'
 
 post = frontmatter.load(dir)
 
