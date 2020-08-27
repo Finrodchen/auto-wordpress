@@ -4,15 +4,36 @@ import bs4
 import re
 import time
 import pandas as pd
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
 
 case_number = 1
 
-case = []
 rows = []
 columns = []
 
+scopes = ["https://spreadsheets.google.com/feeds"]
+
+credentials = ServiceAccountCredentials.from_json_keyfile_name(
+        "credentials.json", scopes)
+
+client = gspread.authorize(credentials)
+
+sheet = client.open_by_key(
+        "1AvkvzvahCl5ybBkWIJwGQvOhwQ84gHyZT743ZeXclwQ").sheet1
+
 for round in range(150):
-    
+
+    scopes = ["https://spreadsheets.google.com/feeds"]
+
+    credentials = ServiceAccountCredentials.from_json_keyfile_name(
+            "credentials.json", scopes)
+
+    client = gspread.authorize(credentials)
+
+    sheet = client.open_by_key(
+            "1AvkvzvahCl5ybBkWIJwGQvOhwQ84gHyZT743ZeXclwQ").sheet1
+   
     url = "http://spmcell.cde.org.tw/Public/readdocument.aspx?documentId=" + str(case_number)
     
     opener = build_opener(HTTPCookieProcessor())
@@ -43,8 +64,7 @@ for round in range(150):
         
         columns.append("")
 
-        case.append(rows)
+        sheet.insert_row(rows, 1)
 
-df = pd.DataFrame(case, columns=columns)
+sheet.insert_row(columns, 1)
 
-df.to_csv(f"./data/doma_list.csv", encoding = "utf_8_sig")
